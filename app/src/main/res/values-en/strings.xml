@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name" translatable="false">PowerHome</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in" translatable="false">Sign in</string>
+    <string name="register_button">Sign up</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="invalid_password">Password must be at least 5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="welcome_to_powerhome">Welcome to PowerHome</string>
+    <string name="register_title">Create an account</string>
+    <string name="username_hint">Username</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="mot_de_passe_oubli">Forgot password ?</string>
+    <string name="title_pt2">Home</string>
+    <string name="confirmer_le_mot_de_passe">Confirm password</string>
+    <string name="title_pt1">Power</string>
+    <string name="cr_er_un_compte">Create an account</string>
+    <string name="vous_avez_d_j_un_compte_connectez_vous">Sign in</string>
+    <string name="nom_complet">Username</string>
+    <string name="identifiez_vous">Sign in</string>
+    <string name="nouveau_sur_power_home">New on Power Home?</string>
+    <string name="continuer_sur_facebook">Continue with Facebook</string>
+</resources>

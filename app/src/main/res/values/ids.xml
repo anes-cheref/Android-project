@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="confirm_password" type="id" />
+    <item name="login_link" type="id"/>
+    <item name="title_register" type="id" />
+    <item name="fullname" type="id" />
+    <item name="email" type="id" />
+    <item name="back_to_login" type="id" />
+    <item name="main" type="id" />
+</resources>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_marginTop="64dp">
+
+        <TextView
+            android:id="@+id/title_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/cr_er_un_compte"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_person_24"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <EditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="@string/nom_complet"
+                android:inputType="textPersonName"
+                />
+        </LinearLayout>
+
+
+        <!-- Champ Email -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/mail"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp" />
+        </LinearLayout>
+
+
+        <!-- Champ Mot de passe -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/lock"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:padding="10dp" />
+        </LinearLayout>
+
+
+        <!-- Champ Confirmation du Mot de passe -->
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="@string/confirmer_le_mot_de_passe"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/phone"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"/>
+            <Spinner
+                android:id="@+id/mobile_origin"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                />
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_height="match_parent"
+                android:hint="Mobile"/>
+        </LinearLayout>
+
+        <!-- Bouton Inscription -->
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/splash"
+            android:padding="12dp"
+            android:text="@string/register_title"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <!-- Texte Lien pour Connexion -->
+        <Button
+            android:id="@+id/back_to_login"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/splash"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/vous_avez_d_j_un_compte_connectez_vous"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</ScrollView>

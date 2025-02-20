@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">PowerHome</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="register_button">Registrarse</string>
+    <string name="welcome">"¡Bienvenido!"</string>
+    <string name="invalid_username">Nombre de usuario no válido</string>
+    <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
+    <string name="login_failed">"Error de inicio de sesión"</string>
+    <string name="welcome_to_powerhome">Bienvenido a PowerHome</string>
+    <string name="register_title">Crear una cuenta</string>
+    <string name="username_hint">Usuario</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="mot_de_passe_oubli">¿Olvidaste tu contraseña?</string>
+    <string name="title_pt2">Home</string>
+    <string name="title_pt1">Power</string>
+    <string name="confirmer_le_mot_de_passe">Confirmar la contraseña</string>
+    <string name="cr_er_un_compte">Crear una cuenta</string>
+    <string name="vous_avez_d_j_un_compte_connectez_vous">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="nom_complet">Nombre completo</string>
+    <string name="identifiez_vous">Identifícate</string>
+    <string name="nouveau_sur_power_home">¿Nuevo en Power Home?</string>
+    <string name="continuer_sur_facebook">Continuar con Facebook</string>
+</resources>

@@ -12,8 +12,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.tp_mobile.R;
 import com.example.tp_mobile.ResumeActivity;
+import com.example.tp_mobile.adapter.CountryAdapter;
+import com.example.tp_mobile.model.Country;
 import com.example.tp_mobile.ui.login.LoginActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -32,14 +36,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.mobile_origin);
 
-        // Créer un tableau avec les options
-        String[] phoneCodes = {"+33", "+225", "+226"};
+        // String[] phoneCodes = {"+33", "+225", "+226"};
+        // ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, phoneCodes);
+        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        List<Country> items = List.of(
+                new Country(R.drawable.flag_fr, "France", 33),
+                new Country(R.drawable.flag_ci, "Côte d'ivoire", 225),
+                new Country(R.drawable.flag_usa, "Etats-Unis", 1),
+                new Country(R.drawable.flag_russia, "Russie", 7)
 
-        // Créer un ArrayAdapter avec les options
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, phoneCodes);
+        );
 
-        // Spécifier l'apparence du spinner
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CountryAdapter adapter = new CountryAdapter(RegisterActivity.this,
+                R.layout.item_country, items);
 
         // Associer l'adaptateur au spinner
         spinner.setAdapter(adapter);

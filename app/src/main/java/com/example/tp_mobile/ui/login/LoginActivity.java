@@ -24,7 +24,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tp_mobile.MainActivity;
 import com.example.tp_mobile.R;
+import com.example.tp_mobile.ResidentActivity;
 import com.example.tp_mobile.ui.login.LoginViewModel;
 import com.example.tp_mobile.ui.login.LoginViewModelFactory;
 import com.example.tp_mobile.databinding.ActivityLoginBinding;
@@ -130,6 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent); // Lancer l'activité
                 finish();
             }
+        });
+        binding.login.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, ResidentActivity.class);
+            startActivity(intent);
         });
     }
 

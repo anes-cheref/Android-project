@@ -71,6 +71,7 @@
         android:gravity="end">
 
         <TextView
+            android:id="@+id/mdp_oublie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mot_de_passe_oubli"
@@ -85,11 +86,12 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/action_sign_in"
-        android:enabled="true"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/splash"
-        android:textColor="@color/white"
-        android:layout_marginTop="50dp" />
+        android:enabled="true"
+        android:text="@string/action_sign_in"
+        android:textColor="@color/white" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,7 +153,6 @@
             android:text="@string/continuer_sur_facebook"
             android:textColor="@color/blue_tite"
             android:textSize="16sp"
-
             android:textStyle="bold" />
 
 

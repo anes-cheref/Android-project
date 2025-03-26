@@ -23,4 +23,7 @@
     <string name="identifiez_vous">Identifiez-vous</string>
     <string name="nouveau_sur_power_home">Nouveau sur Power Home?</string>
     <string name="continuer_sur_facebook">Continuer sur Facebook</string>
+    <string name="entrez_votre_email">Entrez votre email</string>
+    <string name="entrez_votre_e_mail_pour_r_initialiser_votre_mot_de_passe">Entrez votre e-mail pour réinitialiser votre mot de passe</string>
+    <string name="r_initialiser_le_mot_de_passe">Réinitialiser le mot de passe</string>
 </resources>

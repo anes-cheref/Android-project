@@ -14,21 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tp_mobile.MainActivity;
+import com.example.tp_mobile.ForgotPasswordActivity;
 import com.example.tp_mobile.R;
 import com.example.tp_mobile.ResidentActivity;
-import com.example.tp_mobile.ui.login.LoginViewModel;
-import com.example.tp_mobile.ui.login.LoginViewModelFactory;
 import com.example.tp_mobile.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -136,6 +132,15 @@ public class LoginActivity extends AppCompatActivity {
         binding.login.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, ResidentActivity.class);
             startActivity(intent);
+        });
+        findViewById(R.id.mdp_oublie).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Création de l'intent pour aller vers RegisterActivity
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent); // Lancer l'activité
+                finish();
+            }
         });
     }
 

@@ -1,26 +1,37 @@
-package com.example.tp_mobile.ui.login;
+package com.example.tp_mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.tp_mobile.R;
-import com.example.tp_mobile.ResumeActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tp_mobile.adapter.CountryAdapter;
 import com.example.tp_mobile.model.Country;
 import com.example.tp_mobile.ui.login.LoginActivity;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private EditText etNom, etPrenom, etEmail, etMdp, etNumero;
+    private Button btnInscription;
+    private static final String URL_REGISTER = "http://10.0.2.2:8888/server/register.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,16 +99,52 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Mot de passe non similaire ❌", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                registerUser(fullname, email, password, phone);
 
-                Toast.makeText(RegisterActivity.this, "Inscription réussie ✅", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, ResumeActivity.class);
-                intent.putExtra("EXTRA_FULLNAME", fullname);
-                intent.putExtra("EXTRA_EMAIL", email);
-                intent.putExtra("EXTRA_PHONE", phone);
-                startActivity(intent);
-                finish();
+
             }
         });
+    }
+
+    private void registerUser(String fullname, String email, String password, String phone) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER,
+                response -> {
+                    Toast.makeText(RegisterActivity.this, "Réponse brute : " + response, Toast.LENGTH_LONG).show();
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String message = jsonResponse.getString("message");
+
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
+
+                        if (message.contains("Inscription réussie")) {
+                            Intent intent = new Intent(RegisterActivity.this, ResumeActivity.class);
+                            intent.putExtra("EXTRA_FULLNAME", fullname);
+                            intent.putExtra("EXTRA_EMAIL", email);
+                            intent.putExtra("EXTRA_PHONE", phone);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        Toast.makeText(RegisterActivity.this, "Erreur de parsing JSON : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                },
+                error -> {
+                    Toast.makeText(RegisterActivity.this, "Erreur d'inscription : " + error.getMessage(), Toast.LENGTH_LONG).show();
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("fullname", fullname);
+                params.put("email", email);
+                params.put("password", password);
+                params.put("phone", phone);
+                return params;
+            }
+        };
+
+        // Ajouter la requête à la file d'attente Volley
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     private boolean isValidFullname(String fullname) {

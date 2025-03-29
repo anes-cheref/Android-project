@@ -2,7 +2,6 @@ package com.example.tp_mobile;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +9,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.tp_mobile.adapter.CountryAdapter;
 import com.example.tp_mobile.adapter.ResidentAdapter;
-import com.example.tp_mobile.model.Country;
 import com.example.tp_mobile.model.Equipement;
 import com.example.tp_mobile.model.Resident;
-import com.example.tp_mobile.ui.login.RegisterActivity;
 
 import java.util.List;
 

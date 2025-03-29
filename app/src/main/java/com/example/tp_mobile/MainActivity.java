@@ -5,9 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
+
         });
 
         ImageView splashImage = findViewById(R.id.splash_image);
@@ -55,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("user_id", -1);
+        String fullname = sharedPreferences.getString("fullname", null);
+
+        if (userId != -1) {
+            Toast.makeText(this, "Reconnexion automatique : " + fullname + " ✅", Toast.LENGTH_SHORT).show();
+        } else {
+            startActivity(new Intent(this, LoginActivity.class)); // Rediriger vers Login si non connecté
+            finish();
+        }
 
     }
 

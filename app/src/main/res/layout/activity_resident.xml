@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ResidentActivity"
     android:orientation="vertical">
+
     <ListView
         android:id="@+id/residents_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_resident"
+        android:layout_height="767dp"
         android:divider="@null"
-        android:dividerHeight="0dp" />
+        android:dividerHeight="0dp"
+        tools:listitem="@layout/item_resident" />
 
 </LinearLayout>

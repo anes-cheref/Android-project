@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="110dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mon Habitat"
+            android:textSize="26sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"/>
+
+        <include
+            android:id="@+id/habitat"
+            layout="@layout/item_resident"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vos équipements"
+            android:textSize="26sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"/>
+        <ListView
+            android:id="@+id/equipments_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            tools:listitem="@layout/item_detailed_equipment"
+            android:divider="@null"
+            android:dividerHeight="8dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_logout"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

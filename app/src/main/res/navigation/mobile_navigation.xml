@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.tp_mobile.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_residents"
+        android:name="com.example.tp_mobile.ui.residents.ResidentsFragment"
+        android:label="@string/title_residents"
+        tools:layout="@layout/fragment_residents" />
+
+    <fragment
+        android:id="@+id/navigation_reservations"
+        android:name="com.example.tp_mobile.ui.reservations.ReservationsFragment"
+        android:label="@string/title_reserve"
+        tools:layout="@layout/fragment_residents" >
+        <action
+            android:id="@+id/action_navigation_reservations_to_equipementsFragment"
+            app:destination="@id/equipementsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/equipementsFragment"
+        android:name="com.example.tp_mobile.ui.EquipementsFragment"
+        android:label="fragment_equipements"
+        tools:layout="@layout/fragment_equipements" >
+        <action
+            android:id="@+id/action_equipementsFragment_to_detailReservationFragment"
+            app:destination="@id/detailReservationFragment" />
+        <action
+            android:id="@+id/action_equipementsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailReservationFragment"
+        android:name="com.example.tp_mobile.ui.DetailReservationFragment"
+        android:label="fragment_detail_reservation"
+        tools:layout="@layout/fragment_detail_reservation" >
+        <action
+            android:id="@+id/action_detailReservationFragment_to_navigation_reservations"
+            app:destination="@id/navigation_reservations" />
+    </fragment>
+
+</navigation>

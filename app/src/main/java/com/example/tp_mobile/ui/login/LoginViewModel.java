@@ -4,18 +4,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.tp_mobile.data.LoginRepository;
 import com.example.tp_mobile.data.Result;
 import com.example.tp_mobile.data.model.LoggedInUser;
 import com.example.tp_mobile.R;
+import com.example.tp_mobile.keystore.KeystorePreference;
 
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
+
 
     LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
@@ -29,16 +34,23 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+    public void login(String token, ProgressBar loading) {
+        loading.setVisibility(View.VISIBLE);
+        loginRepository.login(token, new LoginCallback() {
+            @Override
+            public void onSuccess(Result<LoggedInUser> result) {
+                Log.d("LoginAct", "Logged in successfully");
+                LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+                loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+                loading.setVisibility(View.GONE);
+            }
 
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-        } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+            @Override
+            public void onError(Result.Error error) {
+                loginResult.setValue(new LoginResult(R.string.login_failed));
+                loading.setVisibility(View.GONE);
+            }
+        });
     }
 
     public void loginDataChanged(String username, String password) {

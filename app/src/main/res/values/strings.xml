@@ -26,4 +26,45 @@
     <string name="entrez_votre_email">Entrez votre email</string>
     <string name="entrez_votre_e_mail_pour_r_initialiser_votre_mot_de_passe">Entrez votre e-mail pour réinitialiser votre mot de passe</string>
     <string name="r_initialiser_le_mot_de_passe">Réinitialiser le mot de passe</string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_residents">Habitats</string>
+    <string name="action_logout">Se déconnecter</string>
+    <string name="choose_date">Choisissez une date</string>
+    <string name="action_reserve">Réserver</string>
+    <string name="title_reserve">Réserver</string>
+    <string-array name="custom_months">
+        <item>Janvier</item>
+        <item>Février</item>
+        <item>Mars</item>
+        <item>Avril</item>
+        <item>Mai</item>
+        <item>Juin</item>
+        <item>Juillet</item>
+        <item>Août</item>
+        <item>Septembre</item>
+        <item>Octobre</item>
+        <item>Novembre</item>
+        <item>Décembre</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="conso_info">Conso: %d W</string>
+    <string name="total_wattage">Total Wattage: %d</string>
+    <string name="s_equipements">%s equipements</string>
+    <string name="total_wattage_d">Total Wattage: %d</string>
+    <string name="user_registered">Inscription réussie ✅</string>
+    <string name="non_similar_pwd">Mot de passe non similaire ❌</string>
+    <string name="invalid_pwd_register">Mot de passe invalide ❌</string>
+    <string name="invalid_email_register">Email invalide ❌</string>
+    <string name="user_must_be_letters">Nom invalide ❌ (Seulement des lettres)</string>
+    <string name="must_be_connected">Il faut vous connecter</string>
+    <string name="time_slot_reserved">Créneau réservé avec succès</string>
+    <string name="error_saving_time_slot">Erreur lors de l\'enregistrement</string>
+    <string name="connection_error">Échec de la connexion</string>
+    <string name="reset_email_send">E-mail de réinitialisation envoyé</string>
+    <string name="email_needed">Veuillez entrer un e-mail</string>
+
 </resources>

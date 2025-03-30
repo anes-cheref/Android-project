@@ -6,19 +6,25 @@ import androidx.annotation.NonNull;
 
 import com.example.tp_mobile.data.LoginDataSource;
 import com.example.tp_mobile.data.LoginRepository;
+import com.example.tp_mobile.keystore.KeystorePreference;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
+    private KeystorePreference keystorePreference;
+    public LoginViewModelFactory(KeystorePreference keystorePreference) {
+        this.keystorePreference = keystorePreference;
+    }
 
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(LoginViewModel.class)) {
-            return (T) new LoginViewModel(LoginRepository.getInstance(new LoginDataSource()));
+            return (T) new LoginViewModel(LoginRepository.getInstance(new LoginDataSource(),
+                    keystorePreference));
         } else {
             throw new IllegalArgumentException("Unknown ViewModel class");
         }

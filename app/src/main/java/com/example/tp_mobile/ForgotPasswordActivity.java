@@ -28,10 +28,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 String email = emailEditText.getText().toString().trim();
 
                 if (email.isEmpty()) {
-                    Toast.makeText(ForgotPasswordActivity.this, "Veuillez entrer un e-mail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgotPasswordActivity.this, R.string.email_needed, Toast.LENGTH_SHORT).show();
                 } else {
                     // Ici, vous pouvez appeler une fonction pour envoyer un e-mail de réinitialisation
-                    Toast.makeText(ForgotPasswordActivity.this, "E-mail de réinitialisation envoyé", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgotPasswordActivity.this, R.string.reset_email_send, Toast.LENGTH_SHORT).show();
                 }
             }
         });

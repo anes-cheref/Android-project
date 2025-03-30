@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.tp_mobile.R;
 import com.example.tp_mobile.model.Country;
 
@@ -25,8 +27,9 @@ public class CountryAdapter extends ArrayAdapter<Country> {
         this.items = items;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View converView, ViewGroup parent) {
+    public View getView(int position, View converView, @NonNull ViewGroup parent) {
         View layout = converView;
         if (converView == null) {
             LayoutInflater inflater = activity.getLayoutInflater();
@@ -42,7 +45,7 @@ public class CountryAdapter extends ArrayAdapter<Country> {
     }
 
     @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         View layout = convertView;
         if (convertView == null) {
             LayoutInflater inflater = activity.getLayoutInflater();

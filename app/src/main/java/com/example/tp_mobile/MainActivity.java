@@ -32,20 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView splashImage = findViewById(R.id.splash_image);
 
-        // Créer l'animation
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(splashImage, "scaleX", 0f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(splashImage, "scaleY", 0f, 1f);
 
-        // Définir la durée de l'animation
-        scaleX.setDuration(1000); // 1 seconde
-        scaleY.setDuration(1000); // 1 seconde
+        scaleX.setDuration(1000); // 1 sec
+        scaleY.setDuration(1000);
 
-        // Combiner les deux animations
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(scaleX).with(scaleY);
         animatorSet.start();
 
-        // Rediriger après l'animation
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

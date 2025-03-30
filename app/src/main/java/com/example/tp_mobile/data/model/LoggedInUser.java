@@ -1,21 +1,21 @@
 package com.example.tp_mobile.data.model;
 
+import com.example.tp_mobile.model.ResultLogin;
+
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 public class LoggedInUser {
 
-    private String userId;
     private String displayName;
+    private ResultLogin user;
 
-    public LoggedInUser(String userId, String displayName) {
-        this.userId = userId;
-        this.displayName = displayName;
+    public LoggedInUser(ResultLogin resultLogin) {
+        this.user = resultLogin;
+        this.displayName = user.getFirst();
     }
 
-    public String getUserId() {
-        return userId;
-    }
+    public ResultLogin getUser() { return user; }
 
     public String getDisplayName() {
         return displayName;

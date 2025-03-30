@@ -27,14 +27,11 @@ public class ResumeActivity extends AppCompatActivity {
         TextView emailInput = findViewById(R.id.email);
         TextView phoneInput = findViewById(R.id.phone);
 
-        // ✅ Récupérer les données envoyées par RegisterActivity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String fullname = extras.getString("EXTRA_FULLNAME", "");
             String email = extras.getString("EXTRA_EMAIL", "");
             String phone = extras.getString("EXTRA_PHONE", "");
-
-            // ✅ Afficher les données dans les champs
             fullnameInput.setText(fullname);
             emailInput.setText(email);
             phoneInput.setText(phone);

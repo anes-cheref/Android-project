@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.DetailReservationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="110dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mon Habitat"
+            android:textSize="26sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"/>
+
+        <include
+            android:id="@+id/habitat"
+            layout="@layout/item_resident"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Equipement Selectionné"
+            android:textSize="26sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginVertical="20dp"
+            android:textColor="@color/black"/>
+
+        <include
+            android:id="@+id/equipement"
+            layout="@layout/item_detailed_equipment"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Période souhaitée"
+            android:textSize="26sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginVertical="20dp"
+            android:textColor="@color/black"/>
+
+        <include
+            android:id="@+id/time_slot"
+            layout="@layout/item_time_slot"
+            />
+        <LinearLayout
+            android:id="@+id/reserve_container"
+            app:layout_constraintTop_toBottomOf="@id/availableTimeSlots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_reserve"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

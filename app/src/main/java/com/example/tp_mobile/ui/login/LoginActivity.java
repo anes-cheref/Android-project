@@ -14,23 +14,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tp_mobile.ForgotPasswordActivity;
+import com.example.tp_mobile.MainScreenActivity;
 import com.example.tp_mobile.R;
-import com.example.tp_mobile.ResidentActivity;
+import com.example.tp_mobile.api.PHApiClient;
+import com.example.tp_mobile.api.PHApiService;
 import com.example.tp_mobile.databinding.ActivityLoginBinding;
+import com.example.tp_mobile.keystore.KeystoreHelper;
+import com.example.tp_mobile.keystore.KeystorePreference;
+import com.example.tp_mobile.model.Keys;
+import com.example.tp_mobile.model.Token;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private KeystorePreference keystorePreference;
+
+    String token;
+
+    private final PHApiService apiService = PHApiClient.getClient().create(PHApiService.class);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +53,28 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
+        try {
+            KeystoreHelper.getEncryptionSecret();
+            keystorePreference = new KeystorePreference(this);
+//            keystorePreference.deleteEncryptionSecret(Keys.TOKEN);
+        } catch (Exception e) {
+            Log.d("Error CACHE", "Error trying to access cached data");
+            keystorePreference = null;
+        }
+
+        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory(keystorePreference))
                 .get(LoginViewModel.class);
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+
+        if (keystorePreference != null) {
+            token = keystorePreference.getEncryptionSecret(Keys.TOKEN);
+            Log.d("CACHE", "token ?: " + token);
+            if (token != null) loginViewModel.login(token, binding.loading);
+
+        }
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -74,23 +104,16 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
                 }
-                setResult(Activity.RESULT_OK);
 
-                //Complete and destroy login activity once successful
-                finish();
             }
         });
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -100,53 +123,57 @@ public class LoginActivity extends AppCompatActivity {
         };
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginViewModel.login(usernameEditText.getText().toString(),
+        passwordEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                loginAction(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
+            return false;
         });
 
-        findViewById(R.id.signup_btn).setOnClickListener(new View.OnClickListener() {
+        binding.signupBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        loginButton.setOnClickListener(view -> {
+            loginAction(usernameEditText.getText().toString(),
+                    passwordEditText.getText().toString());
+
+        });
+        binding.mdpOublie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Création de l'intent pour aller vers RegisterActivity
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent); // Lancer l'activité
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
-        binding.login.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, ResidentActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.mdp_oublie).setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void loginAction(String username, String pwd) {
+        apiService.login(username, pwd).enqueue(new Callback<>() {
             @Override
-            public void onClick(View v) {
-                // Création de l'intent pour aller vers RegisterActivity
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent); // Lancer l'activité
-                finish();
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                token = response.body().getToken();
+                loginViewModel.login(token, binding.loading);
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, R.string.connection_error, Toast.LENGTH_SHORT).show();
+                Log.e("API", "Error: " + t.getMessage());
             }
         });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
+        Intent intent = new Intent(LoginActivity.this, MainScreenActivity.class);
+        intent.putExtra(Keys.TOKEN, token);
+        startActivity(intent);
+        setResult(Activity.RESULT_OK);
+        finish();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 

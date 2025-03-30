@@ -40,7 +40,19 @@ dependencies {
     implementation libs.annotation
     implementation libs.lifecycle.livedata.ktx
     implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.legacy.support.v4
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation libs.gson
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libs.retrofit
+    implementation libs.converter.scalars
+    implementation libs.moshi.kotlin
+    implementation libs.converter.moshi
+    implementation libs.logging.interceptor
+    implementation libs.security.crypto.v110alpha06
 }

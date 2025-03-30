@@ -36,9 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.mobile_origin);
 
-        // String[] phoneCodes = {"+33", "+225", "+226"};
-        // ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, phoneCodes);
-        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         List<Country> items = List.of(
                 new Country(R.drawable.flag_fr, "France", 33),
                 new Country(R.drawable.flag_ci, "Côte d'ivoire", 225),
@@ -70,26 +67,26 @@ public class RegisterActivity extends AppCompatActivity {
                 String phone = phoneInput.getText().toString().trim();
 
                 if (!isValidFullname(fullname)) {
-                    Toast.makeText(RegisterActivity.this, "Nom invalide ❌ (Seulement des lettres)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.user_must_be_letters), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!isValidEmail(email)) {
-                    Toast.makeText(RegisterActivity.this, "Email invalide ❌", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.invalid_email_register), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!isValidPassword(password)) {
-                    Toast.makeText(RegisterActivity.this, "Mot de passe invalide ❌", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.invalid_pwd_register), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!password.equals(c_pwd)) {
-                    Toast.makeText(RegisterActivity.this, "Mot de passe non similaire ❌", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.non_similar_pwd), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Toast.makeText(RegisterActivity.this, "Inscription réussie ✅", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, getString(R.string.user_registered), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, ResumeActivity.class);
                 intent.putExtra("EXTRA_FULLNAME", fullname);
                 intent.putExtra("EXTRA_EMAIL", email);

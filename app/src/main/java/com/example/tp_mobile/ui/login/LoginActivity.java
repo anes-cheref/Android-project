@@ -31,6 +31,7 @@ import com.example.tp_mobile.keystore.KeystoreHelper;
 import com.example.tp_mobile.keystore.KeystorePreference;
 import com.example.tp_mobile.model.Keys;
 import com.example.tp_mobile.model.Token;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,8 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory(keystorePreference))
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = binding.username;
-        final EditText passwordEditText = binding.password;
+        final TextInputEditText usernameEditText = (TextInputEditText) binding.username;
+        final TextInputEditText passwordEditText = (TextInputEditText) binding.password;
         final Button loginButton = binding.login;
 
         if (keystorePreference != null) {

@@ -1,26 +1,48 @@
 <resources>
-    <string name="app_name" translatable="false">PowerHome</string>
-    <string name="title_activity_login" translatable="false">LoginActivity</string>
-    <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in" translatable="false">Sign in</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="register_button">Sign up</string>
     <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Invalid username</string>
-    <string name="invalid_password">Password must be at least 5 characters</string>
+    <string name="invalid_password">Password must contain 5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="welcome_to_powerhome">Welcome to PowerHome</string>
     <string name="register_title">Create an account</string>
     <string name="username_hint">Username</string>
     <string name="confirm_password_hint">Confirm password</string>
-    <string name="mot_de_passe_oubli">Forgot password ?</string>
-    <string name="title_pt2">Home</string>
+    <string name="mot_de_passe_oubli">Forgot password?</string>
     <string name="confirmer_le_mot_de_passe">Confirm password</string>
-    <string name="title_pt1">Power</string>
     <string name="cr_er_un_compte">Create an account</string>
-    <string name="vous_avez_d_j_un_compte_connectez_vous">Sign in</string>
-    <string name="nom_complet">Username</string>
-    <string name="identifiez_vous">Sign in</string>
-    <string name="nouveau_sur_power_home">New on Power Home?</string>
+    <string name="vous_avez_d_j_un_compte_connectez_vous">Already have an account? Sign in</string>
+    <string name="nom_complet">Full name</string>
+    <string name="identifiez_vous">Identify yourself</string>
+    <string name="nouveau_sur_power_home">New to Power Home?</string>
     <string name="continuer_sur_facebook">Continue with Facebook</string>
+    <string name="entrez_votre_email">Enter your email</string>
+    <string name="entrez_votre_e_mail_pour_r_initialiser_votre_mot_de_passe">Enter your email to reset your password</string>
+    <string name="r_initialiser_le_mot_de_passe">Reset password</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_residents">Habitats</string>
+    <string name="action_logout">Log out</string>
+    <string name="choose_date">Choose a date</string>
+    <string name="action_reserve">Reserve</string>
+    <string name="title_reserve">Reserve</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="conso_info">Consumption: %d W</string>
+    <string name="total_wattage">Total Wattage: %d</string>
+    <string name="s_equipements">%s equipment</string>
+    <string name="total_wattage_d">Total Wattage: %d</string>
+    <string name="user_registered">Registration successful ✅</string>
+    <string name="non_similar_pwd">Passwords do not match ❌</string>
+    <string name="invalid_pwd_register">Invalid password ❌</string>
+    <string name="invalid_email_register">Invalid email ❌</string>
+    <string name="user_must_be_letters">Invalid name ❌ (Only letters allowed)</string>
+    <string name="must_be_connected">You must be logged in</string>
+    <string name="time_slot_reserved">Time slot successfully reserved</string>
+    <string name="error_saving_time_slot">Error saving time slot</string>
+    <string name="connection_error">Connection failed</string>
+    <string name="reset_email_send">Reset email sent</string>
+    <string name="email_needed">Please enter an email</string>
 </resources>

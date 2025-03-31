@@ -14,8 +14,8 @@
     <string name="username_hint">Identifiant</string>
     <string name="confirm_password_hint">Confirmer mot de passe</string>
     <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
-    <string name="title_pt2">Home</string>
-    <string name="title_pt1">Power</string>
+    <string name="title_pt2" translatable="false">Home</string>
+    <string name="title_pt1" translatable="false">Power</string>
     <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
     <string name="cr_er_un_compte">Créer un compte</string>
     <string name="vous_avez_d_j_un_compte_connectez_vous">Vous avez déjà un compte ? Connectez-vous</string>
@@ -26,7 +26,7 @@
     <string name="entrez_votre_email">Entrez votre email</string>
     <string name="entrez_votre_e_mail_pour_r_initialiser_votre_mot_de_passe">Entrez votre e-mail pour réinitialiser votre mot de passe</string>
     <string name="r_initialiser_le_mot_de_passe">Réinitialiser le mot de passe</string>
-    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_activity_main_screen" translatable="false">MainScreenActivity</string>
     <string name="title_home">Accueil</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

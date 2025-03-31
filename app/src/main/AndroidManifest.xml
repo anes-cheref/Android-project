@@ -23,9 +23,6 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ResidentActivity"
-            android:exported="false" />
-        <activity
             android:name=".ResumeActivity"
             android:exported="false" />
         <activity
